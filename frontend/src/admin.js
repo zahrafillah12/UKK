@@ -59,7 +59,7 @@ async function fetchAdminSpaces() {
         `;
       });
     } else {
-      tbody.innerHTML = '<tr><td colspan="6">No spaces found.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6">Tidak ada ruangan yang ditemukan.</td></tr>';
     }
   } catch (err) { console.error(err); }
 }
@@ -87,8 +87,8 @@ async function fetchAdminReservations() {
         tbody.innerHTML += `
           <tr>
             <td>${reser.kode_booking}</td>
-            <td>${reser.member ? reser.member.nama_member : 'Unknown'}</td>
-            <td>${reser.space ? reser.space.nama_space : 'Unknown'}</td>
+            <td>${reser.member ? reser.member.nama_member : 'Tidak diketahui'}</td>
+            <td>${reser.space ? reser.space.nama_space : 'Tidak diketahui'}</td>
             <td>${reser.tanggal_reservasi}</td>
             <td><span class="badge ${reser.status}">${reser.status}</span></td>
             <td>${actionButtons}</td>
@@ -96,7 +96,7 @@ async function fetchAdminReservations() {
         `;
       });
     } else {
-      tbody.innerHTML = '<tr><td colspan="6">No reservations found.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6">Tidak ada reservasi ditemukan.</td></tr>';
     }
   } catch (err) { console.error(err); }
 }
@@ -122,7 +122,7 @@ async function fetchAdminMembers() {
         `;
       });
     } else {
-      tbody.innerHTML = '<tr><td colspan="4">No members found.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="4">Tidak ada anggota ditemukan.</td></tr>';
     }
   } catch (err) { console.error(err); }
 }
@@ -143,7 +143,7 @@ async function fetchAdminReport() {
 }
 
 window.updateResStatus = async function(id, status) {
-  if(!confirm(`Update status to ${status}?`)) return;
+  if(!confirm(`Perbarui status menjadi ${status}?`)) return;
   try {
     const res = await fetch(`${API_URL}/api/admin/reservasi/${id}/status`, {
       method: 'PATCH',

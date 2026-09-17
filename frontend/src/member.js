@@ -81,7 +81,7 @@ window.closeModal = function() {
 async function handleBooking(e) {
   e.preventDefault();
   const errorDiv = document.getElementById('book-error');
-  errorDiv.textContent = 'Processing...';
+  errorDiv.textContent = 'Memproses...';
 
   // Check promo code if any
   const promo = document.getElementById('book-promo').value.trim();
@@ -98,11 +98,11 @@ async function handleBooking(e) {
       if (pData.status) {
         diskonId = pData.data.id;
       } else {
-        errorDiv.textContent = 'Promo code invalid or expired.';
+        errorDiv.textContent = 'Kode promo tidak valid atau kedaluwarsa.';
         return;
       }
     } catch(err) {
-      errorDiv.textContent = 'Error checking promo code.';
+      errorDiv.textContent = 'Gagal mengecek kode promo.';
       return;
     }
   }
@@ -129,14 +129,14 @@ async function handleBooking(e) {
     
     if (res.ok && result.status) {
       closeModal();
-      alert('Booking successful!');
+      alert('Pesanan berhasil!');
       fetchHistory();
       switchView('history');
     } else {
-      errorDiv.textContent = result.message || 'Booking failed.';
+      errorDiv.textContent = result.message || 'Pemesanan gagal.';
     }
   } catch (err) {
-    errorDiv.textContent = 'Network error.';
+    errorDiv.textContent = 'Kesalahan jaringan.';
   }
 }
 
@@ -159,7 +159,7 @@ function renderHistory(reservations) {
   tbody.innerHTML = '';
   
   if (reservations.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No reservations found.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Tidak ada histori pemesanan.</td></tr>';
     return;
   }
 
@@ -167,13 +167,13 @@ function renderHistory(reservations) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${res.kode_booking}</td>
-      <td>${res.space ? res.space.nama_space : 'Unknown'}</td>
+      <td>${res.space ? res.space.nama_space : 'Tidak diketahui'}</td>
       <td>${res.tanggal_reservasi}</td>
       <td>${res.jam_mulai} - ${res.jam_selesai}</td>
       <td>Rp ${res.total_bayar.toLocaleString('id-ID')}</td>
       <td><span class="badge ${res.status}">${res.status.replace('_', ' ').toUpperCase()}</span></td>
       <td>
-        <button class="btn" style="padding:4px 8px; font-size:0.8rem;" onclick="viewTicket(${res.id})">Ticket</button>
+        <button class="btn" style="padding:4px 8px; font-size:0.8rem;" onclick="viewTicket(${res.id})">Tiket</button>
       </td>
     `;
     tbody.appendChild(tr);
@@ -203,7 +203,7 @@ window.viewTicket = async function(id) {
       alert(result.message);
     }
   } catch (err) {
-    alert('Failed to load ticket.');
+    alert('Gagal memuat tiket.');
   }
 }
 

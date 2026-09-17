@@ -8,7 +8,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   const btn = document.getElementById('login-btn');
   const errorMsg = document.getElementById('error-msg');
   
-  btn.textContent = 'Loading...';
+  btn.textContent = 'Memproses...';
   btn.disabled = true;
   errorMsg.textContent = '';
   
@@ -38,13 +38,13 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         window.location.href = '/member.html';
       }
     } else {
-      errorMsg.textContent = result.message || 'Login failed. Please try again.';
-      btn.textContent = 'Login';
+      errorMsg.textContent = result.message || 'Gagal masuk. Silakan coba lagi.';
+      btn.textContent = 'Masuk';
       btn.disabled = false;
     }
   } catch (err) {
-    errorMsg.textContent = 'Network error. Please try again later.';
-    btn.textContent = 'Login';
+    errorMsg.textContent = 'Kesalahan jaringan. Silakan coba lagi nanti.';
+    btn.textContent = 'Masuk';
     btn.disabled = false;
   }
 });

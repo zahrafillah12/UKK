@@ -16,7 +16,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
   const errorMsg = document.getElementById('error-msg');
   const successMsg = document.getElementById('success-msg');
   
-  btn.textContent = 'Loading...';
+  btn.textContent = 'Memproses...';
   btn.disabled = true;
   errorMsg.textContent = '';
   successMsg.textContent = '';
@@ -33,22 +33,22 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     const result = await response.json();
     
     if (response.ok && result.status) {
-      successMsg.textContent = 'Registration successful! Redirecting to login...';
+      successMsg.textContent = 'Pendaftaran berhasil! Mengalihkan ke halaman masuk...';
       setTimeout(() => {
         window.location.href = '/login.html';
       }, 2000);
     } else {
-      errorMsg.textContent = result.message || 'Registration failed.';
+      errorMsg.textContent = result.message || 'Pendaftaran gagal.';
       if (result.message && typeof result.message === 'object') {
          // handle validation array from nestjs
          errorMsg.textContent = result.message.join(', ');
       }
-      btn.textContent = 'Register';
+      btn.textContent = 'Daftar Sekarang';
       btn.disabled = false;
     }
   } catch (err) {
-    errorMsg.textContent = 'Network error. Please try again later.';
-    btn.textContent = 'Register';
+    errorMsg.textContent = 'Kesalahan jaringan. Silakan coba lagi nanti.';
+    btn.textContent = 'Daftar Sekarang';
     btn.disabled = false;
   }
 });

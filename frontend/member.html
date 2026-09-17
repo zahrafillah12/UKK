@@ -152,21 +152,21 @@
             Smart Space
         </div>
         <ul class="nav-menu">
-            <li><a href="#" class="active" id="nav-book"><i class='bx bx-plus-circle'></i> Book Space</a></li>
-            <li><a href="#" id="nav-history"><i class='bx bx-history'></i> My Reservations</a></li>
-            <li><a href="/" onclick="window.logout(event)"><i class='bx bx-log-out'></i> Logout</a></li>
+            <li><a href="#" class="active" id="nav-book"><i class='bx bx-plus-circle'></i> Pesan Ruangan</a></li>
+            <li><a href="#" id="nav-history"><i class='bx bx-history'></i> Reservasi Saya</a></li>
+            <li><a href="/" onclick="window.logout(event)"><i class='bx bx-log-out'></i> Keluar</a></li>
         </ul>
     </aside>
 
     <main class="main-content">
         <header class="header">
-            <h2 id="page-title">Book a Space</h2>
+            <h2 id="page-title">Pesan Ruangan</h2>
         </header>
 
         <!-- View: Book Space -->
         <div id="view-book">
             <div class="card">
-                <h3>Available Spaces</h3>
+                <h3>Ruangan Tersedia</h3>
                 <div class="spaces-grid" id="spaces-list">
                     <!-- Spaces will be rendered here -->
                 </div>
@@ -176,18 +176,18 @@
         <!-- View: History -->
         <div id="view-history" style="display: none;">
             <div class="card">
-                <h3>My Reservations</h3>
+                <h3>Reservasi Saya</h3>
                 <div style="overflow-x:auto;">
                   <table>
                       <thead>
                           <tr>
-                              <th>Booking Code</th>
-                              <th>Space</th>
-                              <th>Date</th>
-                              <th>Time</th>
-                              <th>Total</th>
+                              <th>Kode Booking</th>
+                              <th>Ruangan</th>
+                              <th>Tanggal</th>
+                              <th>Waktu</th>
+                              <th>Total Bayar</th>
                               <th>Status</th>
-                              <th>Action</th>
+                              <th>Aksi</th>
                           </tr>
                       </thead>
                       <tbody id="history-list">
@@ -202,30 +202,30 @@
     <!-- Booking Modal -->
     <div class="modal" id="booking-modal">
         <div class="modal-content">
-            <h3>Complete Reservation</h3>
+            <h3>Selesaikan Reservasi</h3>
             <p id="modal-space-name"></p>
             <form id="booking-form">
                 <input type="hidden" id="book-space-id">
                 <div class="form-group">
-                    <label>Date</label>
+                    <label>Tanggal</label>
                     <input type="date" id="book-date" required>
                 </div>
                 <div class="form-group">
-                    <label>Start Time</label>
+                    <label>Jam Mulai</label>
                     <input type="time" id="book-time" required>
                 </div>
                 <div class="form-group">
-                    <label>Duration (Hours)</label>
+                    <label>Durasi (Jam)</label>
                     <input type="number" id="book-duration" min="1" value="1" required>
                 </div>
                 <div class="form-group">
-                    <label>Promo Code (Optional)</label>
+                    <label>Kode Promo (Opsional)</label>
                     <input type="text" id="book-promo">
                 </div>
                 <div id="book-error" style="color:red; margin-bottom:10px;"></div>
                 <div style="display:flex; justify-content:space-between;">
-                  <button type="button" class="btn" style="background:#ccc; color:#333;" onclick="closeModal()">Cancel</button>
-                  <button type="submit" class="btn">Confirm Booking</button>
+                  <button type="button" class="btn" style="background:#ccc; color:#333;" onclick="closeModal()">Batal</button>
+                  <button type="submit" class="btn">Konfirmasi Pesanan</button>
                 </div>
             </form>
         </div>
@@ -238,7 +238,7 @@
             <div id="ticket-content" style="margin: 20px 0; padding: 20px; border: 2px dashed var(--accent-blue);">
                 <!-- Ticket details rendered here -->
             </div>
-            <button type="button" class="btn" onclick="closeTicketModal()">Close</button>
+            <button type="button" class="btn" onclick="closeTicketModal()">Tutup</button>
         </div>
     </div>
 
