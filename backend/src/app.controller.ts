@@ -32,9 +32,14 @@ export class AppController {
   pushDb() {
     const { execSync } = require('child_process');
     try {
-      // Menambahkan env CI=1 agar tidak ada prompt interaktif
+      const dbUrl = process.env.DATABASE_URL || process.env.MYSQL_URL || 'mysql://root:@localhost:3306/ukk_db';
       const result = execSync('npx prisma db push --accept-data-loss', {
-        env: { ...process.env, CI: '1', PRISMA_HIDE_UPDATE_MESSAGE: '1' }
+        env: { 
+          ...process.env, 
+          DATABASE_URL: dbUrl,
+          CI: '1', 
+          PRISMA_HIDE_UPDATE_MESSAGE: '1' 
+        }
       }).toString();
       return {
         status: true,
