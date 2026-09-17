@@ -32,7 +32,10 @@ export class AppController {
   pushDb() {
     const { execSync } = require('child_process');
     try {
-      const result = execSync('npx prisma db push --accept-data-loss').toString();
+      // Menambahkan env CI=1 agar tidak ada prompt interaktif
+      const result = execSync('npx prisma db push --accept-data-loss', {
+        env: { ...process.env, CI: '1', PRISMA_HIDE_UPDATE_MESSAGE: '1' }
+      }).toString();
       return {
         status: true,
         message: 'Database synced successfully',
