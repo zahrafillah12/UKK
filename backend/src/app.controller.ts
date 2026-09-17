@@ -31,8 +31,14 @@ export class AppController {
   @ApiOperation({ summary: 'Force sync database' })
   pushDb() {
     const { execSync } = require('child_process');
+    const fs = require('fs');
+    const path = require('path');
     try {
       const dbUrl = process.env.DATABASE_URL || process.env.MYSQL_URL || 'mysql://root:@localhost:3306/ukk_db';
+      
+      // Tulis file .env agar Prisma CLI 100% bisa membaca DATABASE_URL
+      fs.writeFileSync(path.join(process.cwd(), '.env'), `DATABASE_URL="${dbUrl}"\n`);
+      
       const result = execSync('npx prisma db push --accept-data-loss', {
         env: { 
           ...process.env, 
