@@ -44,11 +44,25 @@ export class AuthService {
     const access_token = await this.jwtService.signAsync(payload);
 
     return {
-      id: user.id,
-      username: user.username,
-      role: user.role,
-      member: user.member,
-      access_token };
+      message: 'Registrasi Member berhasil!',
+      data: {
+        id: user.id,
+        username: user.username,
+        role: user.role,
+        member: {
+          id: user.member.id,
+          user_id: user.member.id_user,
+          nama_member: user.member.nama_member,
+          instansi: user.member.instansi,
+          alamat: user.member.alamat,
+          telp: user.member.telp,
+          foto: user.member.foto,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        access_token
+      }
+    };
   }
 
   async registerAdminSpace(dto: RegisterAdminSpaceDto, ) {
@@ -77,11 +91,23 @@ export class AuthService {
     const access_token = await this.jwtService.signAsync(payload);
 
     return {
-      id: user.id,
-      username: user.username,
-      role: user.role,
-      space_owner: user.spaceOwner,
-      access_token };
+      message: 'Registrasi Admin Space berhasil!',
+      data: {
+        id: user.id,
+        username: user.username,
+        role: user.role,
+        space_owner: {
+          id: user.spaceOwner.id,
+          user_id: user.spaceOwner.id_user,
+          nama_coworking: user.spaceOwner.nama_coworking,
+          nama_pemilik: user.spaceOwner.nama_pemilik,
+          telp: user.spaceOwner.telp,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        access_token
+      }
+    };
   }
 
   async login(dto: LoginUserDto, ) {
