@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Space Booking</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Smart Space - Solusi Ruang Kerja Anda</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Boxicons for modern icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
@@ -18,14 +14,14 @@
       <nav class="navbar">
         <div class="nav-container">
           <div class="logo">
-            <i class='bx bx-building-house'></i>
+            <i class='bx bx-buildings'></i>
             <span>SMART SPACE</span>
           </div>
           <ul class="nav-links">
             <li><a href="#home">Beranda</a></li>
-            <li><a href="#spaces">Ruangan</a></li>
-            <li><a href="#features">Fasilitas</a></li>
-            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#insights">Artikel</a></li>
             <li id="auth-nav-item"><a href="/login.html" class="btn-primary">Masuk / Daftar</a></li>
           </ul>
         </div>
@@ -33,113 +29,234 @@
 
       <!-- Hero Section -->
       <header class="hero" id="home">
-        <!-- We use an inline style here for the background image, or we can set it in CSS.
-             I'll generate a placeholder image via CSS. -->
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <h1>Berdayakan<br/>Ruang Kerja Anda</h1>
-          <p>Tingkatkan bisnis Anda dengan ruang kerja premium yang fleksibel, dirancang khusus untuk produktivitas dan pertumbuhan.</p>
+          <h1>Solusi Ruang Kerja & Audit<br/>Terpercaya untuk Keputusan yang Lebih Baik</h1>
+          <p>Smart Space berkomitmen memberikan layanan penyewaan ruang kerja yang profesional, fleksibel, dan terintegrasi untuk mendukung pertumbuhan bisnis Anda dengan fasilitas terbaik.</p>
           <div class="hero-buttons">
-            <a href="#spaces" class="btn-primary">Lihat Ruangan</a>
-            <a href="/register.html" class="btn-secondary">Daftar Sekarang</a>
+            <a href="/login.html" class="btn-primary" style="margin-right: 15px;">Pesan Ruangan &rarr;</a>
+            <a href="#services" class="btn-outline">Pelajari Layanan Kami &rarr;</a>
+          </div>
+          <div class="hero-features">
+            <span><i class='bx bx-check-shield'></i> Aman & Profesional</span>
+            <span><i class='bx bx-wifi'></i> Fasilitas Lengkap</span>
+            <span><i class='bx bx-time'></i> Akses 24/7</span>
           </div>
         </div>
       </header>
 
-      <!-- Overlapping Features Cards -->
-      <section class="overlap-cards">
-        <div class="card-container">
-          <div class="card">
-            <div class="icon"><i class='bx bx-laptop'></i></div>
-            <h3>Meja Fleksibel</h3>
-            <p>Cocok untuk pekerja lepas dan remote yang membutuhkan lingkungan profesional kapan saja.</p>
-            <a href="#" class="btn-outline">Pelajari Lebih Lanjut</a>
-          </div>
-          <div class="card">
-            <div class="icon"><i class='bx bx-group'></i></div>
-            <h3>Ruang Rapat</h3>
-            <p>Ruangan privat dengan fasilitas lengkap untuk menyambut klien dan diskusi tim tanpa hambatan.</p>
-            <a href="#" class="btn-outline">Pelajari Lebih Lanjut</a>
-          </div>
-          <div class="card">
-            <div class="icon"><i class='bx bx-calendar-star'></i></div>
-            <h3>Ruang Acara</h3>
-            <p>Area luas yang dapat disesuaikan untuk lokakarya, seminar, dan pertemuan perusahaan.</p>
-            <a href="#" class="btn-outline">Pelajari Lebih Lanjut</a>
+      <!-- Services Grid Section -->
+      <section class="services-section" id="services">
+        <div class="section-container">
+          <span class="section-tag">01 LAYANAN KAMI</span>
+          <h2 class="section-title">Fasilitas Profesional untuk Kebutuhan Bisnis Anda</h2>
+          
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="icon"><i class='bx bx-laptop'></i></div>
+              <h4>Meja Kerja Fleksibel</h4>
+              <p>Ruang kerja mandiri atau meja bersama yang cocok untuk freelancer dan remote worker, dilengkapi dengan internet super cepat.</p>
+              <a href="#">Selengkapnya &rarr;</a>
+            </div>
+            <div class="service-card">
+              <div class="icon"><i class='bx bx-group'></i></div>
+              <h4>Ruang Rapat Privat</h4>
+              <p>Ruang rapat dengan fasilitas presentasi lengkap (proyektor, papan tulis) untuk diskusi internal atau pertemuan klien.</p>
+              <a href="#">Selengkapnya &rarr;</a>
+            </div>
+            <div class="service-card">
+              <div class="icon"><i class='bx bx-building-house'></i></div>
+              <h4>Kantor Pribadi</h4>
+              <p>Ruangan eksklusif tertutup untuk tim berisi 4-10 orang yang membutuhkan privasi tinggi dan operasional harian stabil.</p>
+              <a href="#">Selengkapnya &rarr;</a>
+            </div>
+            <div class="service-card">
+              <div class="icon"><i class='bx bx-calendar-star'></i></div>
+              <h4>Ruang Acara (Event Space)</h4>
+              <p>Area lapang berkapasitas besar untuk acara networking, seminar, atau lokakarya, lengkap dengan sistem tata suara.</p>
+              <a href="#">Selengkapnya &rarr;</a>
+            </div>
+            <div class="service-card">
+              <div class="icon"><i class='bx bx-coffee-togo'></i></div>
+              <h4>Area Komunal & Cafe</h4>
+              <p>Area bersantai dengan fasilitas dapur, kopi gratis, dan suasana yang mendukung relasi antar penyewa.</p>
+              <a href="#">Selengkapnya &rarr;</a>
+            </div>
+            <div class="service-card">
+              <div class="icon"><i class='bx bx-desktop'></i></div>
+              <h4>Virtual Office</h4>
+              <p>Layanan alamat bisnis prestisius, pengelolaan surat, dan penerimaan telepon untuk mendukung legalitas usaha Anda.</p>
+              <a href="#">Selengkapnya &rarr;</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Our Focus Section -->
-      <section class="focus-section" id="features">
-        <h2>MENGAPA MEMILIH KAMI</h2>
-        <div class="focus-container">
-          <div class="focus-item">
-            <div class="focus-icon"><i class='bx bx-line-chart'></i></div>
-            <h4>Kenyamanan</h4>
-            <p>Perabotan ergonomis dan lingkungan ber-AC untuk kenyamanan maksimal saat bekerja.</p>
-            <a href="#" class="link-text">Pelajari Lebih Lanjut</a>
+      <!-- About & Stats Section -->
+      <section class="stats-section" id="about">
+        <div class="stats-split">
+          <div class="stats-text">
+            <span class="section-tag">02 TENTANG KAMI</span>
+            <h2 class="section-title" style="margin-bottom: 20px;">Mitra Terpercaya Menuju Bisnis yang Berkelanjutan</h2>
+            <p style="color: #666; margin-bottom: 30px;">Kami adalah penyedia layanan penyewaan ruang kerja modern (Coworking Space) yang berdedikasi memberikan lingkungan kerja terbaik dengan infrastruktur tangguh, desain ergonomis, dan fleksibilitas tinggi untuk mendukung kesuksesan para profesional.</p>
+            <a href="#" class="btn-outline">Tentang Kami &rarr;</a>
           </div>
-          <div class="focus-item">
-            <div class="focus-icon"><i class='bx bx-bolt-circle'></i></div>
-            <h4>Efisiensi</h4>
-            <p>Internet berkecepatan tinggi dan suplai listrik tanpa gangguan untuk operasional yang lancar.</p>
-            <a href="#" class="link-text">Pelajari Lebih Lanjut</a>
+          <div class="stats-image"></div>
+        </div>
+      </section>
+
+      <!-- The Overlapping Stats Banner -->
+      <div class="stats-banner">
+        <div class="stat-item">
+          <i class='bx bx-award'></i>
+          <h3>5+</h3>
+          <p>Tahun Pengalaman</p>
+        </div>
+        <div class="stat-item">
+          <i class='bx bx-group'></i>
+          <h3>500+</h3>
+          <p>Klien Aktif</p>
+        </div>
+        <div class="stat-item">
+          <i class='bx bx-building'></i>
+          <h3>30+</h3>
+          <p>Fasilitas Ruang</p>
+        </div>
+        <div class="stat-item">
+          <i class='bx bx-calendar-check'></i>
+          <h3>10rb+</h3>
+          <p>Reservasi Selesai</p>
+        </div>
+      </div>
+
+      <!-- Articles / Insights Section -->
+      <section class="insights-section" id="insights">
+        <div class="section-container">
+          <div class="insights-header">
+            <div>
+              <span class="section-tag">03 INSIGHT & ARTIKEL</span>
+              <h2 class="section-title" style="margin-bottom: 0;">Insight Terkini untuk<br/>Keputusan yang Lebih Cerdas</h2>
+            </div>
+            <a href="#" class="btn-outline">Lihat Semua Artikel &rarr;</a>
           </div>
-          <div class="focus-item">
-            <div class="focus-icon"><i class='bx bx-bulb'></i></div>
-            <h4>Inovasi</h4>
-            <p>Integrasi teknologi modern dan sistem pemesanan pintar dalam genggaman Anda.</p>
-            <a href="#" class="link-text">Pelajari Lebih Lanjut</a>
-          </div>
-          <div class="focus-item">
-            <div class="focus-icon"><i class='bx bx-pie-chart-alt-2'></i></div>
-            <h4>Aksesibilitas</h4>
-            <p>Lokasi strategis dengan akses 24/7 yang dapat menyesuaikan jadwal unik Anda.</p>
-            <a href="#" class="link-text">Pelajari Lebih Lanjut</a>
+          
+          <div class="insights-grid">
+            <div class="insight-card">
+              <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600');"></div>
+              <div class="insight-content">
+                <span style="background: #134db3; color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 4px;">BISNIS</span>
+                <h4 style="margin-top: 10px;">Pentingnya Lingkungan Kerja yang Mendukung Produktivitas</h4>
+                <p>Lingkungan kerja yang ergonomis membantu pengambilan keputusan yang lebih cepat dan strategis bagi tim Anda.</p>
+                <div class="insight-meta">15 Mei 2026 • 5 min read</div>
+              </div>
+            </div>
+            <div class="insight-card">
+              <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600');"></div>
+              <div class="insight-content">
+                <span style="background: #134db3; color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 4px;">MANAJEMEN</span>
+                <h4 style="margin-top: 10px;">Cara Memilih Coworking Space yang Tepat untuk Startup</h4>
+                <p>Update terbaru mengenai tren gaya kerja hybrid dan dampaknya pada pelaku usaha mikro, kecil, dan menengah.</p>
+                <div class="insight-meta">10 Mei 2026 • 6 min read</div>
+              </div>
+            </div>
+            <div class="insight-card">
+              <div class="insight-img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600');"></div>
+              <div class="insight-content">
+                <span style="background: #134db3; color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 4px;">OPERASIONAL</span>
+                <h4 style="margin-top: 10px;">Tips Meningkatkan Efisiensi Rapat Tim di Ruang Terbatas</h4>
+                <p>Langkah-langkah praktis untuk meningkatkan efisiensi dan produktivitas operasional tim di ruangan rapat terbatas.</p>
+                <div class="insight-meta">5 Mei 2026 • 4 min read</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Featured Spaces / Recent Projects -->
-      <section class="featured-spaces" id="spaces">
-        <h2 class="light-text">RUANGAN UNGGULAN KAMI</h2>
-        <div class="featured-container">
-          <div class="space-card">
-            <div class="space-img" id="img-1"></div>
-            <div class="space-content">
-              <h4>Kantor Privat Premium</h4>
-              <p>Ruangan eksklusif untuk tim berisi 4-6 orang dengan fasilitas khusus.</p>
-              <a href="#" class="btn-outline">Lihat Detail</a>
-            </div>
+      <!-- CTA Footer Contact -->
+      <section class="cta-footer">
+        <div class="cta-container">
+          <div class="cta-text">
+            <span style="font-weight:bold; font-size:0.9rem; opacity:0.8;">04 HUBUNGI KAMI</span>
+            <h2>Butuh Ruangan?<br/>Kami Siap Membantu Anda!</h2>
+            <p>Tim profesional kami siap memberikan solusi terbaik untuk kebutuhan kantor, event, dan bisnis Anda.</p>
           </div>
-          <div class="space-card">
-            <div class="space-img" id="img-2"></div>
-            <div class="space-content">
-              <h4>Meja Kerja Kreatif</h4>
-              <p>Area terbuka yang cerah dirancang untuk membangun relasi dan kolaborasi.</p>
-              <a href="#" class="btn-outline">Lihat Detail</a>
+          <div class="cta-cards">
+            <div class="cta-card">
+              <i class='bx bx-phone-call'></i>
+              <div>
+                <h5>Telepon</h5>
+                <p>(021) 1234 5678</p>
+              </div>
             </div>
-          </div>
-          <div class="space-card">
-            <div class="space-img" id="img-3"></div>
-            <div class="space-content">
-              <h4>Ruang Rapat Eksekutif</h4>
-              <p>Ruang rapat canggih yang dilengkapi peralatan konferensi video terkini.</p>
-              <a href="#" class="btn-outline">Lihat Detail</a>
+            <div class="cta-card">
+              <i class='bx bx-envelope'></i>
+              <div>
+                <h5>Email</h5>
+                <p>info@smartspace.co.id</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
       
       <!-- Footer -->
-      <footer>
-        <div class="footer-content">
-          <div class="logo">
-            <i class='bx bx-building-house'></i>
-            <span>SMART SPACE</span>
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div>
+            <div class="logo" style="color: white; margin-bottom: 20px;">
+              <i class='bx bx-buildings'></i>
+              <span>SMART SPACE</span>
+            </div>
+            <p style="font-size: 0.9rem; opacity: 0.7; max-width: 250px;">Smart Space adalah penyedia layanan penyewaan ruangan profesional yang memberikan fasilitas terbaik berstandar internasional.</p>
+            <div style="margin-top: 20px; display: flex; gap: 15px;">
+              <i class='bx bxl-linkedin' style="font-size: 1.5rem;"></i>
+              <i class='bx bxl-facebook' style="font-size: 1.5rem;"></i>
+              <i class='bx bxl-instagram' style="font-size: 1.5rem;"></i>
+              <i class='bx bxl-youtube' style="font-size: 1.5rem;"></i>
+            </div>
           </div>
-          <p>&copy; 2026 Smart Space Booking. Hak Cipta Dilindungi Undang-Undang.</p>
+          <div>
+            <h4>Layanan</h4>
+            <ul>
+              <li>Meja Fleksibel</li>
+              <li>Ruang Rapat</li>
+              <li>Kantor Pribadi</li>
+              <li>Ruang Acara</li>
+              <li>Virtual Office</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Perusahaan</h4>
+            <ul>
+              <li>Tentang Kami</li>
+              <li>Tim Kami</li>
+              <li>Karier</li>
+              <li>Artikel</li>
+              <li>Kontak Kami</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sumber Daya</h4>
+            <ul>
+              <li>Insight & Artikel</li>
+              <li>FAQ</li>
+              <li>Regulasi</li>
+              <li>Download</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Kontak Kami</h4>
+            <ul style="opacity:1;">
+              <li style="display:flex; gap:10px;"><i class='bx bx-map'></i> Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan 12190</li>
+              <li style="display:flex; gap:10px;"><i class='bx bx-phone'></i> (021) 1234 5678</li>
+              <li style="display:flex; gap:10px;"><i class='bx bx-envelope'></i> info@smartspace.co.id</li>
+              <li style="display:flex; gap:10px;"><i class='bx bx-time'></i> Senin - Jumat: 08.30 - 17.30 WIB</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>&copy; 2026 Smart Space Booking. Hak Cipta Dilindungi.</div>
+          <div>Kebijakan Privasi &nbsp;|&nbsp; Syarat & Ketentuan</div>
         </div>
       </footer>
     </div>

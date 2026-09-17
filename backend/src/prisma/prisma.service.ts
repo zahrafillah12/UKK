@@ -5,11 +5,7 @@ import { PrismaClient } from '@prisma/client';
 export class PrismaService extends PrismaClient implements OnModuleInit {
   constructor() {
     super({
-      datasources: {
-        db: {
-          url: process.env.DATABASE_URL || process.env.MYSQL_URL || 'mysql://root:@localhost:3306/ukk_db',
-        },
-      },
+      datasourceUrl: process.env.DATABASE_URL || process.env.MYSQL_URL || 'mysql://root:@localhost:3306/ukk_db',
     });
   }
 
