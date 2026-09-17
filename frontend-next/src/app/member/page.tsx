@@ -142,55 +142,92 @@ export default function MemberDashboard() {
         <ul className="nav-menu">
           <li><button className={activeView === "book" ? "active" : ""} onClick={() => setActiveView("book")}><i className="bx bx-plus-circle"></i> Pesan Ruangan</button></li>
           <li><button className={activeView === "history" ? "active" : ""} onClick={() => setActiveView("history")}><i className="bx bx-history"></i> Reservasi Saya</button></li>
+          <li><button className={activeView === "promo" ? "active" : ""} onClick={() => setActiveView("promo")}><i className="bx bx-purchase-tag-alt"></i> Info Promo</button></li>
           <li><button onClick={handleLogout}><i className="bx bx-log-out"></i> Keluar</button></li>
         </ul>
       </aside>
 
       <main className="main-content">
         <header className="header">
-          <h2>{activeView === "book" ? "Pesan Ruangan" : "Reservasi Saya"}</h2>
+          <h2>{activeView === "book" ? "Pesan Ruangan" : activeView === "history" ? "Reservasi Saya" : "Daftar Promo"}</h2>
         </header>
 
         {activeView === "book" && (
           <div className="card">
             <h3>Ruangan Tersedia</h3>
-            <div className="spaces-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "25px" }}>
+            <div className="card-grid">
               {spaces.map(s => (
-                <div className="space-item" key={s.id} style={{ border: "1px solid var(--border-color)", borderRadius: "12px", overflow: "hidden", background: "var(--white)" }}>
-                  <div className="space-img" style={{ height: "180px", backgroundImage: `url(${s.foto ? `${API_URL}/uploads/${s.foto}` : "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800"})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
-                  <div className="space-info" style={{ padding: "20px" }}>
-                    <h4 style={{ margin: "0 0 10px 0", color: "var(--primary-dark)", fontSize: "1.1rem" }}>{s.nama_space}</h4>
-                    <p style={{ fontSize: "0.9rem", color: "#666" }}>Rp {s.harga_per_jam.toLocaleString("id-ID")} / Jam</p>
-                    <button className="btn" style={{ width: "100%", marginTop: "10px" }} onClick={() => openBookModal(s.id, s.nama_space)}>Book</button>
+                <div className="space-card" key={s.id}>
+                  {s.foto ? (
+                    <div className="space-img-placeholder" style={{ backgroundImage: `url(${API_URL}/uploads/${s.foto})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                  ) : (
+                    <div className="space-img-placeholder"><i className="bx bx-building-house"></i></div>
+                  )}
+                  <div className="space-content">
+                    <div className="space-header">
+                      <h3>{s.nama_space}</h3>
+                      <span className="space-price">Rp {s.harga_per_jam.toLocaleString("id-ID")}</span>
+                    </div>
+                    <div className="space-details">
+                      <span><i className="bx bx-group"></i> Kapasitas {s.kapasitas}</span>
+                      <span><i className="bx bx-category"></i> {s.tipe.toUpperCase()}</span>
+                    </div>
+                    <p style={{ fontSize: "0.9rem", color: "#64748b", marginBottom: "15px", height: "40px", overflow: "hidden" }}>
+                      {s.deskripsi || "Tidak ada deskripsi tersedia."}
+                    </p>
+                    <button className="btn-primary" style={{ width: "100%" }} onClick={() => openBookModal(s.id, s.nama_space)}>
+                      <i className="bx bx-check-circle"></i> Pesan Sekarang
+                    </button>
                   </div>
                 </div>
               ))}
-              {spaces.length === 0 && <p>Tidak ada ruangan tersedia.</p>}
+              {spaces.length === 0 && <p style={{ gridColumn: "1 / -1", color: "#64748b" }}>Tidak ada ruangan tersedia saat ini.</p>}
             </div>
           </div>
         )}
 
         {activeView === "history" && (
           <div className="card">
-            <h3>Reservasi Saya</h3>
+            <h3 style={{ marginBottom: "20px" }}>Riwayat Reservasi Saya</h3>
             <div style={{ overflowX: "auto" }}>
               <table>
                 <thead><tr><th>Kode Booking</th><th>Ruangan</th><th>Tanggal</th><th>Waktu</th><th>Total Bayar</th><th>Status</th><th>Aksi</th></tr></thead>
                 <tbody>
                   {history.map(h => (
                     <tr key={h.id}>
-                      <td>{h.kode_booking}</td>
+                      <td style={{ fontWeight: 600, color: "var(--primary-dark)" }}>#{h.kode_booking}</td>
                       <td>{h.space ? h.space.nama_space : "-"}</td>
                       <td>{h.tanggal_reservasi}</td>
-                      <td>{h.jam_mulai} - {h.jam_selesai}</td>
-                      <td>Rp {h.total_bayar.toLocaleString("id-ID")}</td>
-                      <td><span className={`badge ${h.status}`}>{h.status.replace("_", " ").toUpperCase()}</span></td>
-                      <td><button className="btn" style={{ padding: "4px 8px", fontSize: "0.8rem" }} onClick={() => viewTicket(h.id)}>Tiket</button></td>
+                      <td>{h.jam_mulai.slice(0, 5)} - {h.jam_selesai.slice(0, 5)}</td>
+                      <td style={{ fontWeight: 600 }}>Rp {h.total_bayar.toLocaleString("id-ID")}</td>
+                      <td><span className={`badge ${h.status.toLowerCase()}`}>{h.status.replace(/_/g, " ").toUpperCase()}</span></td>
+                      <td>
+                        <button className="btn-sm" onClick={() => viewTicket(h.id)}><i className="bx bx-receipt"></i> Tiket</button>
+                      </td>
                     </tr>
                   ))}
-                  {history.length === 0 && <tr><td colSpan={7} style={{ textAlign: "center" }}>Tidak ada histori pemesanan.</td></tr>}
+                  {history.length === 0 && <tr><td colSpan={7} style={{ textAlign: "center", padding: "40px", color: "#64748b" }}>Tidak ada histori pemesanan.</td></tr>}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {activeView === "promo" && (
+          <div className="card">
+            <h3 style={{ marginBottom: "20px" }}>Promo & Diskon Spesial</h3>
+            <div className="card-grid">
+              {/* Tampilan Statis Sementara (Harusnya ambil dari API jika ada endpoint public diskon) */}
+              <div className="space-card" style={{ border: "2px dashed var(--accent-blue)" }}>
+                <div className="space-content" style={{ textAlign: "center", padding: "30px 20px" }}>
+                  <i className="bx bx-gift" style={{ fontSize: "4rem", color: "var(--accent-blue)", marginBottom: "15px" }}></i>
+                  <h3>Diskon 10% Pengguna Baru</h3>
+                  <p style={{ color: "#64748b", margin: "10px 0" }}>Gunakan kode ini saat melakukan booking ruangan untuk pertama kali.</p>
+                  <div style={{ background: "#eff6ff", padding: "10px", borderRadius: "8px", fontWeight: "bold", color: "var(--primary-dark)", letterSpacing: "2px", marginTop: "15px" }}>
+                    WELCOME10
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -200,29 +237,32 @@ export default function MemberDashboard() {
       {isBookModalOpen && (
         <div className="modal-overlay active">
           <div className="modal-content">
-            <h3 style={{ marginTop: 0, color: "var(--primary-dark)", fontSize: "1.4rem", fontWeight: 700, marginBottom: "20px" }}>Selesaikan Reservasi</h3>
-            <p style={{ marginBottom: "20px" }}>Space: {bookForm.nama_space}</p>
+            <div className="modal-header">
+              <h3>Selesaikan Reservasi</h3>
+              <button className="modal-close" onClick={() => setBookModalOpen(false)}>&times;</button>
+            </div>
+            <p style={{ marginBottom: "20px", color: "#64748b" }}>Space: <strong style={{ color: "var(--primary-dark)" }}>{bookForm.nama_space}</strong></p>
             <form onSubmit={handleBooking}>
-              <div className="form-group" style={{ marginBottom: "20px", textAlign: "left" }}>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>Tanggal</label>
-                <input type="date" required value={bookForm.tanggal_reservasi} onChange={e => setBookForm({ ...bookForm, tanggal_reservasi: e.target.value })} style={{ width: "100%", padding: "12px" }} />
+              <div className="form-group">
+                <label>Tanggal</label>
+                <input type="date" required value={bookForm.tanggal_reservasi} onChange={e => setBookForm({ ...bookForm, tanggal_reservasi: e.target.value })} />
               </div>
-              <div className="form-group" style={{ marginBottom: "20px", textAlign: "left" }}>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>Jam Mulai</label>
-                <input type="time" required value={bookForm.jam_mulai} onChange={e => setBookForm({ ...bookForm, jam_mulai: e.target.value })} style={{ width: "100%", padding: "12px" }} />
+              <div className="form-group">
+                <label>Jam Mulai</label>
+                <input type="time" required value={bookForm.jam_mulai} onChange={e => setBookForm({ ...bookForm, jam_mulai: e.target.value })} />
               </div>
-              <div className="form-group" style={{ marginBottom: "20px", textAlign: "left" }}>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>Durasi (Jam)</label>
-                <input type="number" min="1" required value={bookForm.durasi_jam} onChange={e => setBookForm({ ...bookForm, durasi_jam: Number(e.target.value) })} style={{ width: "100%", padding: "12px" }} />
+              <div className="form-group">
+                <label>Durasi (Jam)</label>
+                <input type="number" min="1" required value={bookForm.durasi_jam} onChange={e => setBookForm({ ...bookForm, durasi_jam: Number(e.target.value) })} />
               </div>
-              <div className="form-group" style={{ marginBottom: "20px", textAlign: "left" }}>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: 600 }}>Kode Promo (Opsional)</label>
-                <input type="text" value={bookForm.promo} onChange={e => setBookForm({ ...bookForm, promo: e.target.value })} style={{ width: "100%", padding: "12px" }} />
+              <div className="form-group">
+                <label>Kode Promo (Opsional)</label>
+                <input type="text" placeholder="Misal: WELCOME10" value={bookForm.promo} onChange={e => setBookForm({ ...bookForm, promo: e.target.value })} />
               </div>
-              {bookError && <div style={{ color: "red", marginBottom: "10px" }}>{bookError}</div>}
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <button type="button" className="btn" style={{ background: "#ccc", color: "#333" }} onClick={() => setBookModalOpen(false)}>Batal</button>
-                <button type="submit" className="btn" disabled={loading}>Konfirmasi Pesanan</button>
+              {bookError && <div className="error-msg">{bookError}</div>}
+              <div className="modal-footer">
+                <button type="button" className="btn-secondary" style={{ color: "var(--primary-dark)", borderColor: "#e2e8f0" }} onClick={() => setBookModalOpen(false)}>Batal</button>
+                <button type="submit" className="btn-primary" disabled={loading}>{loading ? "Memproses..." : "Konfirmasi Pesanan"}</button>
               </div>
             </form>
           </div>
@@ -233,18 +273,34 @@ export default function MemberDashboard() {
       {isTicketModalOpen && ticketData && (
         <div className="modal-overlay active">
           <div className="modal-content" style={{ textAlign: "center" }}>
-            <h3 style={{ marginTop: 0, color: "var(--primary-dark)", fontSize: "1.4rem", fontWeight: 700, marginBottom: "20px" }}>E-Ticket</h3>
-            <div style={{ margin: "20px 0", padding: "20px", border: "2px dashed var(--accent-blue)" }}>
-              <h2 style={{ marginBottom: "10px" }}>{ticketData.coworking_space.nama}</h2>
-              <p><strong>Code:</strong> {ticketData.kode_booking}</p>
-              <p><strong>Space:</strong> {ticketData.space.nama}</p>
-              <p><strong>Date:</strong> {ticketData.jadwal.tanggal}</p>
-              <p><strong>Time:</strong> {ticketData.jadwal.jam_mulai} - {ticketData.jadwal.jam_selesai}</p>
-              <hr style={{ margin: "15px 0" }} />
-              <h3 style={{ color: "var(--accent-blue)" }}>Total: Rp {ticketData.rincian_pembayaran.total_dibayar.toLocaleString("id-ID")}</h3>
-              <p style={{ fontSize: "0.8rem", color: "#888", marginTop: "10px" }}>Status: {ticketData.status_reservasi}</p>
+            <div className="modal-header" style={{ justifyContent: "center" }}>
+              <h3 style={{ margin: 0, color: "var(--primary-dark)" }}>E-Ticket</h3>
             </div>
-            <button type="button" className="btn" onClick={() => setTicketModalOpen(false)}>Tutup</button>
+            <div style={{ margin: "20px 0", padding: "20px", border: "2px dashed var(--accent-blue)", borderRadius: "12px", background: "#f8fafc" }}>
+              <h2 style={{ marginBottom: "10px", color: "var(--primary-dark)" }}>{ticketData.coworking_space.nama}</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px", textAlign: "left", marginTop: "20px" }}>
+                <div>
+                  <span style={{ display: "block", fontSize: "0.85rem", color: "#64748b" }}>Booking Code</span>
+                  <strong style={{ fontSize: "1.1rem" }}>{ticketData.kode_booking}</strong>
+                </div>
+                <div>
+                  <span style={{ display: "block", fontSize: "0.85rem", color: "#64748b" }}>Space</span>
+                  <strong style={{ fontSize: "1.1rem" }}>{ticketData.space.nama}</strong>
+                </div>
+                <div>
+                  <span style={{ display: "block", fontSize: "0.85rem", color: "#64748b" }}>Date</span>
+                  <strong style={{ fontSize: "1.1rem" }}>{ticketData.jadwal.tanggal}</strong>
+                </div>
+                <div>
+                  <span style={{ display: "block", fontSize: "0.85rem", color: "#64748b" }}>Time</span>
+                  <strong style={{ fontSize: "1.1rem" }}>{ticketData.jadwal.jam_mulai.slice(0,5)} - {ticketData.jadwal.jam_selesai.slice(0,5)}</strong>
+                </div>
+              </div>
+              <hr style={{ margin: "20px 0", border: "none", borderTop: "1px solid #e2e8f0" }} />
+              <h3 style={{ color: "var(--accent-blue)", fontSize: "1.5rem" }}>Total: Rp {ticketData.rincian_pembayaran.total_dibayar.toLocaleString("id-ID")}</h3>
+              <p style={{ fontSize: "0.8rem", color: "#888", marginTop: "10px" }}>Status: <span className={`badge ${ticketData.status_reservasi.toLowerCase()}`}>{ticketData.status_reservasi}</span></p>
+            </div>
+            <button type="button" className="btn-primary" style={{ width: "100%" }} onClick={() => setTicketModalOpen(false)}>Tutup</button>
           </div>
         </div>
       )}

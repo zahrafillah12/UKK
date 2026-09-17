@@ -181,28 +181,30 @@ export default function AdminDashboard() {
           <section className="view-section active">
             <div className="header">
               <h2>Kelola Ruangan</h2>
-              <button className="btn" onClick={() => { setSpaceForm({ id: "", nama_space: "", tipe: "desk", harga_per_jam: "", kapasitas: "", deskripsi: "" }); setSpaceModalOpen(true); }}>+ Tambah Ruangan</button>
+              <button className="btn-primary" onClick={() => { setSpaceForm({ id: "", nama_space: "", tipe: "desk", harga_per_jam: "", kapasitas: "", deskripsi: "" }); setSpaceModalOpen(true); }}>+ Tambah Ruangan</button>
             </div>
             <div className="card">
-              <table>
-                <thead><tr><th>ID</th><th>Nama Ruangan</th><th>Tipe</th><th>Kapasitas</th><th>Harga/Jam</th><th>Aksi</th></tr></thead>
-                <tbody>
-                  {spaces.map(s => (
-                    <tr key={s.id}>
-                      <td>{s.id}</td>
-                      <td>{s.nama_space}</td>
-                      <td>{s.tipe}</td>
-                      <td>{s.kapasitas}</td>
-                      <td>Rp {s.harga_per_jam.toLocaleString("id-ID")}</td>
-                      <td>
-                        <button className="btn btn-sm" onClick={() => { setSpaceForm(s); setSpaceModalOpen(true); }}>Edit</button>
-                        <button className="btn btn-sm btn-danger" onClick={() => deleteSpace(s.id)}>Delete</button>
-                      </td>
-                    </tr>
-                  ))}
-                  {spaces.length === 0 && <tr><td colSpan={6}>Tidak ada ruangan.</td></tr>}
-                </tbody>
-              </table>
+              <div style={{ overflowX: "auto" }}>
+                <table>
+                  <thead><tr><th>ID</th><th>Nama Ruangan</th><th>Tipe</th><th>Kapasitas</th><th>Harga/Jam</th><th>Aksi</th></tr></thead>
+                  <tbody>
+                    {spaces.map(s => (
+                      <tr key={s.id}>
+                        <td>{s.id}</td>
+                        <td style={{ fontWeight: 600, color: "var(--primary-dark)" }}>{s.nama_space}</td>
+                        <td><span className="badge" style={{ background: "#f1f5f9", color: "#64748b" }}>{s.tipe.toUpperCase()}</span></td>
+                        <td>{s.kapasitas} Org</td>
+                        <td style={{ fontWeight: 600 }}>Rp {s.harga_per_jam.toLocaleString("id-ID")}</td>
+                        <td>
+                          <button className="btn-sm" onClick={() => { setSpaceForm(s); setSpaceModalOpen(true); }}><i className="bx bx-edit"></i> Edit</button>
+                          <button className="btn-sm btn-danger" onClick={() => deleteSpace(s.id)}><i className="bx bx-trash"></i> Hapus</button>
+                        </td>
+                      </tr>
+                    ))}
+                    {spaces.length === 0 && <tr><td colSpan={6} style={{ textAlign: "center", padding: "40px", color: "#64748b" }}>Belum ada ruangan yang ditambahkan.</td></tr>}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
@@ -211,26 +213,28 @@ export default function AdminDashboard() {
           <section className="view-section active">
             <div className="header"><h2>Reservasi & Check-In</h2></div>
             <div className="card">
-              <table>
-                <thead><tr><th>Kode Booking</th><th>Member</th><th>Ruangan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
-                <tbody>
-                  {reservations.map(r => (
-                    <tr key={r.id}>
-                      <td>{r.kode_booking}</td>
-                      <td>{r.member ? r.member.nama_member : "-"}</td>
-                      <td>{r.space ? r.space.nama_space : "-"}</td>
-                      <td>{r.tanggal_reservasi}</td>
-                      <td><span className={`badge ${r.status}`}>{r.status}</span></td>
-                      <td>
-                        {r.status === "belum_dikonfirm" && <button className="btn btn-sm btn-success" onClick={() => updateResStatus(r.id, "disetujui")}>Approve</button>}
-                        {r.status === "disetujui" && <button className="btn btn-sm" onClick={() => checkIn(r.id)}>Check-In</button>}
-                        {r.status === "aktif" && <button className="btn btn-sm" style={{ background: "#ffc107", color: "black" }} onClick={() => checkOut(r.id)}>Check-Out</button>}
-                      </td>
-                    </tr>
-                  ))}
-                  {reservations.length === 0 && <tr><td colSpan={6}>Tidak ada reservasi.</td></tr>}
-                </tbody>
-              </table>
+              <div style={{ overflowX: "auto" }}>
+                <table>
+                  <thead><tr><th>Kode Booking</th><th>Member</th><th>Ruangan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
+                  <tbody>
+                    {reservations.map(r => (
+                      <tr key={r.id}>
+                        <td style={{ fontWeight: 600, color: "var(--primary-dark)" }}>#{r.kode_booking}</td>
+                        <td>{r.member ? r.member.nama_member : "-"}</td>
+                        <td>{r.space ? r.space.nama_space : "-"}</td>
+                        <td>{r.tanggal_reservasi}</td>
+                        <td><span className={`badge ${r.status.toLowerCase()}`}>{r.status.replace(/_/g, " ").toUpperCase()}</span></td>
+                        <td>
+                          {r.status === "belum_dikonfirm" && <button className="btn-sm btn-success" onClick={() => updateResStatus(r.id, "disetujui")}><i className="bx bx-check"></i> Approve</button>}
+                          {r.status === "disetujui" && <button className="btn-sm" onClick={() => checkIn(r.id)}><i className="bx bx-log-in-circle"></i> Check-In</button>}
+                          {r.status === "aktif" && <button className="btn-sm" style={{ background: "#f59e0b", color: "white" }} onClick={() => checkOut(r.id)}><i className="bx bx-log-out-circle"></i> Check-Out</button>}
+                        </td>
+                      </tr>
+                    ))}
+                    {reservations.length === 0 && <tr><td colSpan={6} style={{ textAlign: "center", padding: "40px", color: "#64748b" }}>Tidak ada reservasi saat ini.</td></tr>}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
@@ -239,20 +243,22 @@ export default function AdminDashboard() {
           <section className="view-section active">
             <div className="header"><h2>Data Pelanggan</h2></div>
             <div className="card">
-              <table>
-                <thead><tr><th>Nama Lengkap</th><th>No. Telp</th><th>Instansi</th><th>Alamat</th></tr></thead>
-                <tbody>
-                  {members.map(m => (
-                    <tr key={m.id}>
-                      <td>{m.nama_member}</td>
-                      <td>{m.telp}</td>
-                      <td>{m.instansi || "-"}</td>
-                      <td>{m.alamat || "-"}</td>
-                    </tr>
-                  ))}
-                  {members.length === 0 && <tr><td colSpan={4}>Tidak ada anggota.</td></tr>}
-                </tbody>
-              </table>
+              <div style={{ overflowX: "auto" }}>
+                <table>
+                  <thead><tr><th>Nama Lengkap</th><th>No. Telp</th><th>Instansi</th><th>Alamat</th></tr></thead>
+                  <tbody>
+                    {members.map(m => (
+                      <tr key={m.id}>
+                        <td style={{ fontWeight: 600 }}>{m.nama_member}</td>
+                        <td>{m.telp}</td>
+                        <td>{m.instansi || "-"}</td>
+                        <td>{m.alamat || "-"}</td>
+                      </tr>
+                    ))}
+                    {members.length === 0 && <tr><td colSpan={4} style={{ textAlign: "center", padding: "40px", color: "#64748b" }}>Tidak ada data pelanggan.</td></tr>}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
@@ -261,39 +267,51 @@ export default function AdminDashboard() {
           <section className="view-section active">
             <div className="header">
               <h2>Kelola Promo & Diskon</h2>
-              <button className="btn" onClick={() => { setDiskonForm({ id: "", nama_diskon: "", persentase_diskon: "", tanggal_awal: "", tanggal_akhir: "" }); setDiskonModalOpen(true); }}>+ Tambah Promo</button>
+              <button className="btn-primary" onClick={() => { setDiskonForm({ id: "", nama_diskon: "", persentase_diskon: "", tanggal_awal: "", tanggal_akhir: "" }); setDiskonModalOpen(true); }}>+ Tambah Promo</button>
             </div>
             <div className="card">
-              <table>
-                <thead><tr><th>ID</th><th>Kode Promo</th><th>Diskon (%)</th><th>Mulai</th><th>Berakhir</th><th>Aksi</th></tr></thead>
-                <tbody>
-                  {diskon.map(d => (
-                    <tr key={d.id}>
-                      <td>{d.id}</td>
-                      <td><strong>{d.nama_diskon}</strong></td>
-                      <td>{d.persentase_diskon}%</td>
-                      <td>{new Date(d.tanggal_awal).toLocaleDateString("id-ID")}</td>
-                      <td>{new Date(d.tanggal_akhir).toLocaleDateString("id-ID")}</td>
-                      <td>
-                        <button className="btn btn-sm" onClick={() => { setDiskonForm({ ...d, tanggal_awal: d.tanggal_awal.split("T")[0], tanggal_akhir: d.tanggal_akhir.split("T")[0] }); setDiskonModalOpen(true); }}>Edit</button>
-                        <button className="btn btn-sm btn-danger" onClick={() => deleteDiskon(d.id)}>Delete</button>
-                      </td>
-                    </tr>
-                  ))}
-                  {diskon.length === 0 && <tr><td colSpan={6}>Tidak ada promo.</td></tr>}
-                </tbody>
-              </table>
+              <div style={{ overflowX: "auto" }}>
+                <table>
+                  <thead><tr><th>Kode Promo</th><th>Diskon (%)</th><th>Berlaku Sejak</th><th>Berakhir Pada</th><th>Aksi</th></tr></thead>
+                  <tbody>
+                    {diskon.map(d => (
+                      <tr key={d.id}>
+                        <td style={{ fontWeight: 700, color: "var(--accent-blue)", letterSpacing: "1px" }}>{d.nama_diskon}</td>
+                        <td><span className="badge" style={{ background: "#dcfce7", color: "#166534" }}>{d.persentase_diskon}% OFF</span></td>
+                        <td>{new Date(d.tanggal_awal).toLocaleDateString("id-ID")}</td>
+                        <td>{new Date(d.tanggal_akhir).toLocaleDateString("id-ID")}</td>
+                        <td>
+                          <button className="btn-sm" onClick={() => { setDiskonForm({ ...d, tanggal_awal: d.tanggal_awal.split("T")[0], tanggal_akhir: d.tanggal_akhir.split("T")[0] }); setDiskonModalOpen(true); }}><i className="bx bx-edit"></i> Edit</button>
+                          <button className="btn-sm btn-danger" onClick={() => deleteDiskon(d.id)}><i className="bx bx-trash"></i> Hapus</button>
+                        </td>
+                      </tr>
+                    ))}
+                    {diskon.length === 0 && <tr><td colSpan={5} style={{ textAlign: "center", padding: "40px", color: "#64748b" }}>Belum ada promo yang ditambahkan.</td></tr>}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
 
         {activeView === "reports" && (
           <section className="view-section active">
-            <div className="header"><h2>Laporan Pendapatan</h2></div>
-            <div className="card">
-              <h3>Bulan Ini</h3>
-              <p><strong>Total Transaksi:</strong> {reports.trans}</p>
-              <p><strong>Pendapatan Bersih:</strong> Rp {reports.income.toLocaleString("id-ID")}</p>
+            <div className="header"><h2>Laporan Pendapatan Bulan Ini</h2></div>
+            <div className="metrics-grid">
+              <div className="metric-card">
+                <div className="metric-icon blue"><i className="bx bx-transfer-alt"></i></div>
+                <div className="metric-info">
+                  <h4>Total Transaksi</h4>
+                  <h2>{reports.trans}</h2>
+                </div>
+              </div>
+              <div className="metric-card">
+                <div className="metric-icon green"><i className="bx bx-wallet"></i></div>
+                <div className="metric-info">
+                  <h4>Pendapatan Bersih</h4>
+                  <h2 style={{ color: "#10b981" }}>Rp {reports.income.toLocaleString("id-ID")}</h2>
+                </div>
+              </div>
             </div>
           </section>
         )}
@@ -334,8 +352,8 @@ export default function AdminDashboard() {
                 <textarea required rows={3} value={spaceForm.deskripsi} onChange={e => setSpaceForm({...spaceForm, deskripsi: e.target.value})}></textarea>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger" style={{background:"#888"}} onClick={() => setSpaceModalOpen(false)}>Batal</button>
-                <button type="submit" className="btn">Simpan Data</button>
+                <button type="button" className="btn-secondary" style={{ color: "var(--primary-dark)", borderColor: "#e2e8f0" }} onClick={() => setSpaceModalOpen(false)}>Batal</button>
+                <button type="submit" className="btn-primary">Simpan Ruangan</button>
               </div>
             </form>
           </div>
@@ -353,7 +371,7 @@ export default function AdminDashboard() {
             <form onSubmit={saveDiskon}>
               <div className="form-group">
                 <label>Kode Promo</label>
-                <input type="text" required value={diskonForm.nama_diskon} onChange={e => setDiskonForm({...diskonForm, nama_diskon: e.target.value})} />
+                <input type="text" required value={diskonForm.nama_diskon} onChange={e => setDiskonForm({...diskonForm, nama_diskon: e.target.value})} placeholder="Misal: MERDEKA20" />
               </div>
               <div className="form-group">
                 <label>Persentase Diskon (%)</label>
@@ -368,8 +386,8 @@ export default function AdminDashboard() {
                 <input type="date" required value={diskonForm.tanggal_akhir} onChange={e => setDiskonForm({...diskonForm, tanggal_akhir: e.target.value})} />
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger" style={{background:"#888"}} onClick={() => setDiskonModalOpen(false)}>Batal</button>
-                <button type="submit" className="btn">Simpan Data</button>
+                <button type="button" className="btn-secondary" style={{ color: "var(--primary-dark)", borderColor: "#e2e8f0" }} onClick={() => setDiskonModalOpen(false)}>Batal</button>
+                <button type="submit" className="btn-primary">Simpan Promo</button>
               </div>
             </form>
           </div>

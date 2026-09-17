@@ -287,3 +287,99 @@ footer { background: var(--secondary-dark); color: #94a3b8; padding: 60px 20px 3
   .hero-content h1 { font-size: 2.8rem; }
   .stats-container, .footer-grid { grid-template-columns: 1fr; }
 }
+
+/* Dashboard Grid Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+.space-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid #e2e8f0;
+}
+.space-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+.space-img-placeholder {
+  height: 180px;
+  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+  font-size: 3rem;
+  opacity: 0.8;
+}
+.space-content {
+  padding: 20px;
+}
+.space-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+.space-header h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+.space-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+.space-details {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+.space-details i {
+  color: var(--accent-blue);
+  margin-right: 5px;
+}
+.space-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Metric Cards */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+.metric-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.metric-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.metric-icon.blue { background: #eff6ff; color: var(--accent-blue); }
+.metric-icon.green { background: #ecfdf5; color: #10b981; }
+.metric-info h4 { font-size: 0.9rem; color: #64748b; margin-bottom: 5px; }
+.metric-info h2 { font-size: 1.8rem; margin: 0; }
+

@@ -27,6 +27,26 @@ export class AppController {
     };
   }
 
+  @Get('push-db')
+  @ApiOperation({ summary: 'Force sync database' })
+  pushDb() {
+    const { execSync } = require('child_process');
+    try {
+      const result = execSync('npx prisma db push --accept-data-loss').toString();
+      return {
+        status: true,
+        message: 'Database synced successfully',
+        data: result,
+      };
+    } catch (error) {
+      return {
+        status: false,
+        message: 'Failed to sync database',
+        data: error.message,
+      };
+    }
+  }
+
   @Get('health')
   @ApiOperation({ summary: 'Health Check Server' })
   getHealth() {
