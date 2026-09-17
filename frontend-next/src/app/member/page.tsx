@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://ukk-production-3cee.up.railway.app";
 
 export default function MemberDashboard() {
   const [activeView, setActiveView] = useState("book");

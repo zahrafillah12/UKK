@@ -90,23 +90,88 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--primary-dark); }
 .auth-wrapper::before { width: 400px; height: 400px; background: rgba(59, 130, 246, 0.3); top: -100px; left: -100px; }
 .auth-wrapper::after { width: 500px; height: 500px; background: rgba(139, 92, 246, 0.2); bottom: -150px; right: -150px; }
 
-.auth-container {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px -12px rgba(0,0,0,0.25);
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
+.glass-container {
   position: relative;
   z-index: 10;
-  color: var(--white);
+  display: flex;
+  width: 900px;
+  max-width: 95%;
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.auth-container h2 { color: var(--white); margin-bottom: 25px; font-weight: 700; font-size: 1.8rem; letter-spacing: 0.5px; }
+/* Auth Left Panel */
+.auth-left {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  position: relative;
+}
+
+.auth-left .logo-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.auth-left h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.auth-left p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.btn-glass {
+  display: inline-block;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-glass:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
+/* Auth Right Panel (The Form) */
+.auth-right {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Inner glass box for the form */
+.auth-form-box {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.auth-form-box h2 { color: var(--white); margin-bottom: 25px; font-weight: 700; font-size: 1.8rem; letter-spacing: 0.5px; text-align: center; }
 .auth-tabs { display: flex; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); }
 .auth-tabs button { flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: rgba(255,255,255,0.5); font-size: 1rem; transition: all 0.3s ease; }
 .auth-tabs button:hover { color: var(--white); background: rgba(255,255,255,0.05); border-radius: 6px 6px 0 0; }
