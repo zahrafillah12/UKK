@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Space Booking</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Boxicons for modern icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <i class='bx bx-building-house'></i>
+            <span>SMART SPACE</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#spaces">Spaces</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact" class="btn-primary">Book Now</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <header class="hero" id="home">
+        <!-- We use an inline style here for the background image, or we can set it in CSS.
+             I'll generate a placeholder image via CSS. -->
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Empowering Your<br/>Workspace</h1>
+          <p>Elevate your business with flexible, premium workspaces designed for productivity and growth.</p>
+          <div class="hero-buttons">
+            <a href="#spaces" class="btn-primary">View Spaces</a>
+            <a href="#contact" class="btn-secondary">Contact Us</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Overlapping Features Cards -->
+      <section class="overlap-cards">
+        <div class="card-container">
+          <div class="card">
+            <div class="icon"><i class='bx bx-laptop'></i></div>
+            <h3>Flexible Desks</h3>
+            <p>Perfect for freelancers and remote workers needing a professional environment on demand.</p>
+            <a href="#" class="btn-outline">Learn More</a>
+          </div>
+          <div class="card">
+            <div class="icon"><i class='bx bx-group'></i></div>
+            <h3>Meeting Rooms</h3>
+            <p>Fully equipped, private spaces to host your clients and team brainstorms seamlessly.</p>
+            <a href="#" class="btn-outline">Learn More</a>
+          </div>
+          <div class="card">
+            <div class="icon"><i class='bx bx-calendar-star'></i></div>
+            <h3>Event Spaces</h3>
+            <p>Spacious areas configurable for workshops, seminars, and corporate gatherings.</p>
+            <a href="#" class="btn-outline">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Focus Section -->
+      <section class="focus-section" id="features">
+        <h2>WHY CHOOSE US</h2>
+        <div class="focus-container">
+          <div class="focus-item">
+            <div class="focus-icon"><i class='bx bx-line-chart'></i></div>
+            <h4>Comfort</h4>
+            <p>Ergonomic furniture and climate-controlled environments for maximum comfort.</p>
+            <a href="#" class="link-text">Learn More</a>
+          </div>
+          <div class="focus-item">
+            <div class="focus-icon"><i class='bx bx-bolt-circle'></i></div>
+            <h4>Efficiency</h4>
+            <p>High-speed internet and uninterrupted power supply for smooth operations.</p>
+            <a href="#" class="link-text">Learn More</a>
+          </div>
+          <div class="focus-item">
+            <div class="focus-icon"><i class='bx bx-bulb'></i></div>
+            <h4>Innovation</h4>
+            <p>Modern tech integrations and smart booking systems at your fingertips.</p>
+            <a href="#" class="link-text">Learn More</a>
+          </div>
+          <div class="focus-item">
+            <div class="focus-icon"><i class='bx bx-pie-chart-alt-2'></i></div>
+            <h4>Accessibility</h4>
+            <p>Strategic locations with 24/7 access to fit your unique schedule.</p>
+            <a href="#" class="link-text">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Spaces / Recent Projects -->
+      <section class="featured-spaces" id="spaces">
+        <h2 class="light-text">FEATURED SPACES</h2>
+        <div class="featured-container">
+          <div class="space-card">
+            <div class="space-img" id="img-1"></div>
+            <div class="space-content">
+              <h4>Premium Private Office</h4>
+              <p>Exclusive space for teams of 4-6 with dedicated amenities.</p>
+              <a href="#" class="btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-img" id="img-2"></div>
+            <div class="space-content">
+              <h4>Creative Hub Desk</h4>
+              <p>Vibrant open area designed for networking and collaboration.</p>
+              <a href="#" class="btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-img" id="img-3"></div>
+            <div class="space-content">
+              <h4>Executive Boardroom</h4>
+              <p>State-of-the-art meeting room with video conferencing.</p>
+              <a href="#" class="btn-outline">View Details</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Footer -->
+      <footer>
+        <div class="footer-content">
+          <div class="logo">
+            <i class='bx bx-building-house'></i>
+            <span>SMART SPACE</span>
+          </div>
+          <p>&copy; 2026 Smart Space Booking. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
