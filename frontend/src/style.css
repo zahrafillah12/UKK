@@ -13,9 +13,9 @@
   --radius: 8px;
   
   /* Auth Colors */
-  --auth-bg-dark: #27073b;
-  --auth-gradient: linear-gradient(135deg, #371050 0%, #1e0329 100%);
-  --auth-btn-gradient: linear-gradient(90deg, #ff7a59 0%, #ff4b6b 100%);
+  --auth-bg-dark: #0a2540;
+  --auth-gradient: linear-gradient(135deg, #0a2540 0%, #001529 50%, #000a1a 100%);
+  --auth-btn-gradient: linear-gradient(90deg, #0066ff 0%, #0052cc 100%);
 }
 
 * {
@@ -427,7 +427,7 @@ ul {
 .auth-body::before {
   width: 400px;
   height: 400px;
-  background: linear-gradient(135deg, rgba(255, 75, 107, 0.4) 0%, rgba(255, 122, 89, 0) 100%);
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.4) 0%, rgba(0, 102, 255, 0) 100%);
   top: -100px;
   left: -100px;
 }
@@ -435,7 +435,7 @@ ul {
 .auth-body::after {
   width: 600px;
   height: 600px;
-  background: linear-gradient(135deg, rgba(65, 30, 114, 0.6) 0%, rgba(25, 5, 45, 0) 100%);
+  background: linear-gradient(135deg, rgba(74, 112, 156, 0.6) 0%, rgba(25, 5, 45, 0) 100%);
   bottom: -200px;
   right: -100px;
   border-radius: 30%;
@@ -606,3 +606,10 @@ ul {
 }
 
 .auth-msg.success { color: #4CAF50; }
+
+ . a u t h - t a b s   {   d i s p l a y :   f l e x ;   m a r g i n - b o t t o m :   3 0 p x ;   b o r d e r - b o t t o m :   2 p x   s o l i d   r g b a ( 2 5 5 , 2 5 5 , 2 5 5 , 0 . 1 ) ;   } 
+ . a u t h - t a b s   b u t t o n   {   f l e x :   1 ;   p a d d i n g :   1 2 p x ;   b a c k g r o u n d :   n o n e ;   b o r d e r :   n o n e ;   c u r s o r :   p o i n t e r ;   f o n t - w e i g h t :   6 0 0 ;   c o l o r :   r g b a ( 2 5 5 , 2 5 5 , 2 5 5 , 0 . 5 ) ;   f o n t - s i z e :   1 r e m ;   t r a n s i t i o n :   a l l   0 . 3 s   e a s e ;   } 
+ . a u t h - t a b s   b u t t o n : h o v e r   {   c o l o r :   v a r ( - - w h i t e ) ;   b a c k g r o u n d :   r g b a ( 2 5 5 , 2 5 5 , 2 5 5 , 0 . 0 5 ) ;   b o r d e r - r a d i u s :   6 p x   6 p x   0   0 ;   } 
+ . a u t h - t a b s   b u t t o n . a c t i v e   {   c o l o r :   v a r ( - - w h i t e ) ;   b o r d e r - b o t t o m :   3 p x   s o l i d   v a r ( - - w h i t e ) ;   m a r g i n - b o t t o m :   - 2 p x ;   } 
+  
+ 
