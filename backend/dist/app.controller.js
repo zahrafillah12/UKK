@@ -34,8 +34,11 @@ let AppController = class AppController {
     }
     pushDb() {
         const { execSync } = require('child_process');
+        const fs = require('fs');
+        const path = require('path');
         try {
             const dbUrl = process.env.DATABASE_URL || process.env.MYSQL_URL || 'mysql://root:@localhost:3306/ukk_db';
+            fs.writeFileSync(path.join(process.cwd(), '.env'), `DATABASE_URL="${dbUrl}"\n`);
             const result = execSync('npx prisma db push --accept-data-loss', {
                 env: {
                     ...process.env,
