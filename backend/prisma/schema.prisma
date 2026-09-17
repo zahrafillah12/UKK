@@ -28,6 +28,9 @@ model SpaceOwner {
   user           User    @relation(fields: [id_user], references: [id], onDelete: Cascade)
   
   spaces         Space[]
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Member {
@@ -41,6 +44,9 @@ model Member {
   user        User     @relation(fields: [id_user], references: [id], onDelete: Cascade)
 
   reservasi   Reservasi[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Space {

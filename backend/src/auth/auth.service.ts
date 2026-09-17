@@ -57,8 +57,8 @@ export class AuthService {
           alamat: user.member!.alamat,
           telp: user.member!.telp,
           foto: user.member!.foto,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
+          created_at: user.member!.createdAt,
+          updated_at: user.member!.updatedAt
         },
         access_token
       }
@@ -102,8 +102,8 @@ export class AuthService {
           nama_coworking: user.spaceOwner!.nama_coworking,
           nama_pemilik: user.spaceOwner!.nama_pemilik,
           telp: user.spaceOwner!.telp,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
+          created_at: user.spaceOwner!.createdAt,
+          updated_at: user.spaceOwner!.updatedAt
         },
         access_token
       }

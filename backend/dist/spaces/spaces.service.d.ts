@@ -34,6 +34,8 @@ export declare class SpacesService {
             nama_coworking: string;
             nama_pemilik: string;
             id: number;
+            createdAt: Date;
+            updatedAt: Date;
             id_user: number;
         };
         foto_url: string | null;
@@ -45,6 +47,8 @@ export declare class SpacesService {
             nama_coworking: string;
             nama_pemilik: string;
             id: number;
+            createdAt: Date;
+            updatedAt: Date;
             id_user: number;
         };
         foto: string | null;

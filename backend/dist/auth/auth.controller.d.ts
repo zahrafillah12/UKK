@@ -19,8 +19,8 @@ export declare class AuthController {
                 alamat: string | null;
                 telp: string | null;
                 foto: string | null;
-                created_at: string;
-                updated_at: string;
+                created_at: Date;
+                updated_at: Date;
             };
             access_token: string;
         };
@@ -37,8 +37,8 @@ export declare class AuthController {
                 nama_coworking: string;
                 nama_pemilik: string;
                 telp: string;
-                created_at: string;
-                updated_at: string;
+                created_at: Date;
+                updated_at: Date;
             };
             access_token: string;
         };
@@ -48,20 +48,24 @@ export declare class AuthController {
         username: string;
         role: string;
         member: {
-            id: number;
             nama_member: string;
             instansi: string | null;
             alamat: string | null;
             telp: string | null;
             foto: string | null;
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
             id_user: number;
         } | null;
         space_owner: {
-            id: number;
             telp: string;
-            id_user: number;
             nama_coworking: string;
             nama_pemilik: string;
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            id_user: number;
         } | null;
         access_token: string;
     }>;
@@ -70,20 +74,24 @@ export declare class AuthController {
         username: string;
         role: string;
         member: {
-            id: number;
             nama_member: string;
             instansi: string | null;
             alamat: string | null;
             telp: string | null;
             foto: string | null;
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
             id_user: number;
         } | null;
         space_owner: {
-            id: number;
             telp: string;
-            id_user: number;
             nama_coworking: string;
             nama_pemilik: string;
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            id_user: number;
         } | null;
     }>;
 }
