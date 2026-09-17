@@ -42,7 +42,7 @@ async function bootstrap() {
     customSiteTitle: 'Coworking API Docs',
   });
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 5000;
   await app.listen(port);
   console.log(` Application is running on: http://localhost:${port}`);
   console.log(` Swagger documentation is available at: http://localhost:${port}/docs`);

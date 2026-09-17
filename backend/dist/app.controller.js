@@ -32,6 +32,26 @@ let AppController = class AppController {
             timestamp: new Date().toISOString(),
         };
     }
+    pushDb() {
+        const { execSync } = require('child_process');
+        try {
+            const result = execSync('npx prisma db push --accept-data-loss', {
+                env: { ...process.env, CI: '1', PRISMA_HIDE_UPDATE_MESSAGE: '1' }
+            }).toString();
+            return {
+                status: true,
+                message: 'Database synced successfully',
+                data: result,
+            };
+        }
+        catch (error) {
+            return {
+                status: false,
+                message: 'Failed to sync database',
+                data: error.message,
+            };
+        }
+    }
     getHealth() {
         return {
             status: true,
@@ -54,6 +74,13 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "getRoot", null);
 __decorate([
+    (0, common_1.Get)('push-db'),
+    (0, swagger_1.ApiOperation)({ summary: 'Force sync database' }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "pushDb", null);
+__decorate([
     (0, common_1.Get)('health'),
     (0, swagger_1.ApiOperation)({ summary: 'Health Check Server' }),
     __metadata("design:type", Function),
@@ -62,6 +89,6 @@ __decorate([
 ], AppController.prototype, "getHealth", null);
 exports.AppController = AppController = __decorate([
     (0, swagger_1.ApiTags)('Root & Health'),
-    (0, common_1.Controller)()
+    (0, common_1.Controller)('api')
 ], AppController);
 //# sourceMappingURL=app.controller.js.map

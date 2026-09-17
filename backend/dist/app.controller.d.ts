@@ -16,6 +16,11 @@ export declare class AppController {
         };
         timestamp: string;
     };
+    pushDb(): {
+        status: boolean;
+        message: string;
+        data: any;
+    };
     getHealth(): {
         status: boolean;
         statusCode: number;
