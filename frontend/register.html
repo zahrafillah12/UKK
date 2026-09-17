@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Smart Space</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-dark: #121c2d;
+        --secondary-dark: #1a2a40;
+        --accent-blue: #4a709c;
+        --accent-hover: #38577a;
+        --bg-light: #f4f7fa;
+        --white: #ffffff;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-light);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .auth-container {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+      }
+      .auth-container h2 {
+        color: var(--primary-dark);
+        margin-bottom: 20px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      .form-group.full-width {
+        grid-column: span 2;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary-dark);
+        font-size: 0.9rem;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .btn-primary {
+        background: var(--accent-blue);
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+      .btn-primary:hover {
+        background: var(--accent-hover);
+      }
+      .switch-link {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #666;
+      }
+      .switch-link a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      #error-msg {
+        color: red;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+      #success-msg {
+        color: green;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 480px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full-width {
+          grid-column: span 1;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Create an Account</h2>
+        <div id="error-msg"></div>
+        <div id="success-msg"></div>
+        <form id="register-form">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                  <label for="nama_member">Full Name</label>
+                  <input type="text" id="nama_member" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" required placeholder="johndoe123">
+              </div>
+              <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" required placeholder="Min 6 chars">
+              </div>
+              <div class="form-group">
+                  <label for="telp">Phone Number</label>
+                  <input type="text" id="telp" required placeholder="08123...">
+              </div>
+              <div class="form-group">
+                  <label for="instansi">Company / Institution</label>
+                  <input type="text" id="instansi" required placeholder="PT Maju">
+              </div>
+              <div class="form-group full-width">
+                  <label for="alamat">Address</label>
+                  <input type="text" id="alamat" required placeholder="Street address...">
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" id="register-btn">Register</button>
+        </form>
+        <div class="switch-link">
+            Already have an account? <a href="/login.html">Login here</a>
+        </div>
+        <div class="switch-link" style="margin-top: 10px;">
+            <a href="/">&larr; Back to Home</a>
+        </div>
+    </div>
+    
+    <script type="module" src="/src/register.js"></script>
+</body>
+</html>

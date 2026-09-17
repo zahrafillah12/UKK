@@ -14,8 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  checkAuth();
   fetchSpaces();
 });
+
+function checkAuth() {
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+  const authNavItem = document.getElementById('auth-nav-item');
+  
+  if (token && role) {
+    const dashboardUrl = role === 'admin_space' ? '/admin.html' : '/member.html';
+    authNavItem.innerHTML = `<a href="${dashboardUrl}" class="btn-primary">Dashboard</a>
+                             <a href="#" onclick="logout(event)" style="margin-left: 10px; color: white;">Logout</a>`;
+  }
+}
+
+window.logout = function(event) {
+  event.preventDefault();
+  localStorage.removeItem('token');
+  localStorage.removeItem('role');
+  window.location.reload();
+}
 
 async function fetchSpaces() {
   try {
